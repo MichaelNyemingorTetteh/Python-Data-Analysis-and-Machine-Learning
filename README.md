@@ -20,6 +20,7 @@ Credit.csv must sit in the working directory set at the top of the notebook.
 •	scikit-learn
 •	mlxtend
 •	matplotlib (for the selection-path plots)
+
 The first code cell runs %pip install mlxtend, so mlxtend will be installed on first run if it is missing. The other libraries are assumed to be present, as they are in a standard Anaconda install.
 How to run
 1.	Place Credit.csv in the folder you want to work from.
@@ -31,9 +32,11 @@ How to run
 Section	What it does
 Setup	Sets the working directory and imports the libraries.
 Load and prepare data	Reads Credit.csv, creates dummy variables, and splits into X and the target.
-Best Subset (EFS)	Fits the exhaustive selector, then prints the best score, the chosen indices, and the chosen feature names.
-Forward Stepwise	Fits the forward selector, prints the step-by-step subsets and the final choice, and plots the selection path.
-Backward Stepwise	Fits the backward selector, prints the final choice, shows the metric table, and plots the selection path.
+**Best Subset (EFS)**	Fits the exhaustive selector, then prints the best score, the chosen indices, and the chosen feature names.
+
+**Forward Stepwise** Fits the forward selector, prints the step-by-step subsets and the final choice, and plots the selection path.
+
+**Backward Stepwise**	Fits the backward selector, prints the final choice, shows the metric table, and plots the selection path.
 
 **Key result**
 On the Credit data all three methods agree. The best six-feature set is Income, Limit, Rating, Cards, Age, and Student, with a cross-validated R-squared of about 0.9515. Best Subset reaches this by searching every combination; forward and backward selection reach the same set far more cheaply.
