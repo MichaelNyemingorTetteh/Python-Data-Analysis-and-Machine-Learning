@@ -43,16 +43,15 @@ Load and prepare data	Reads Credit.csv, creates dummy variables, and splits into
 **Key result**
 On the Credit data all three methods agree. The best six-feature set is Income, Limit, Rating, Cards, Age, and Student, with a cross-validated R-squared of about 0.9515. Best Subset reaches this by searching every combination; forward and backward selection reach the same set far more cheaply.
 
-**Corrections applied**
-The backward stepwise section originally referred to two different objects, which caused the notebook to fail on a clean top-to-bottom run. The following was corrected:
-•	The backward selector that is actually fitted is named sfs_backward. The cell that prints the results and the cell that plots the selection path were both querying a different, unfitted object called backward_stepwise, which raises NotFittedError. Both now use sfs_backward.
-•	A comment in the backward setup cell said to set forward to True. Backward selection requires forward=False, which the code already used, so only the misleading comment was corrected.
-The rule these fixes follow: fit and query the same object, and keep one consistent name for it.
-
 **Notes and things to watch**
-•	A harmless warning on import. When mlxtend loads, scikit-learn's bundled documentation parser may print a UserWarning about a "potentially wrong underline length." It comes from a formatting quirk in a third-party docstring, not from your code, and it does not affect any result. To silence just that message, add this before the mlxtend import: 
-•	import warningswarnings.filterwarnings("ignore", message="potentially wrong underline length")
-•	Feature names need a DataFrame. k_feature_names_ and best_feature_names_ only return column names if the selector was fitted on a pandas DataFrame. If you fit on a NumPy array, use the index attributes (k_feature_idx_, best_idx_) instead.
-•	An unused object remains. The backward setup cell still creates an unfitted backward_stepwise object that nothing uses after the fixes above. It is left in place so no cell is removed, but you can delete that line for a tidier notebook, since everything now points at sfs_backward.
-•	An unused import. accuracy_score is imported in the setup cell. It is a classification metric and is not used anywhere in this regression notebook, so it can be removed without effect.
+A harmless warning on import. When mlxtend loads, scikit-learn's bundled documentation parser may print a UserWarning about a "potentially wrong underline length." It comes from a formatting quirk in a third-party docstring, not from your code, and it does not affect any result. To silence just that message, add this before the mlxtend import: 
+
+import warningswarnings.filterwarnings("ignore", message="potentially wrong underline length")
+
+Feature names need a DataFrame. k_feature_names_ and best_feature_names_ only return column names if the selector was fitted on a pandas DataFrame. If you fit on a NumPy array, use the index attributes (k_feature_idx_, best_idx_) instead.
+
+An unused object remains. The backward setup cell still creates an unfitted backward_stepwise object that nothing uses after the fixes above. It is left in place so no cell is removed, but you can delete that line for a tidier notebook, since everything now points at sfs_backward.
+
+
+An unused import. accuracy_score is imported in the setup cell. It is a classification metric and is not used anywhere in this regression notebook, so it can be removed without effect.
 
