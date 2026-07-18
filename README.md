@@ -8,9 +8,11 @@ The notebook works through three feature selection methods, in order:
 Every method is scored by 5-fold cross-validation on the R-squared metric, so the comparison between them is fair.
 
 **Data set**
-•	File: Credit.csv (400 rows)
-•	Target: Balance
-•	Predictors: the remaining columns. The categorical columns Gender, Student, Married, and Ethnicity are converted to numeric dummy variables with pd.get_dummies(..., drop_first=True), which leaves 11 predictors for the search.
+File: Credit.csv (400 rows)
+Target: Balance
+
+Predictors: the remaining columns. The categorical columns Gender, Student, Married, and Ethnicity are converted to numeric dummy variables with pd.get_dummies(..., drop_first=True), which leaves 11 predictors for the search.
+
 Credit.csv must sit in the working directory set at the top of the notebook.
 
 **Requirements**
